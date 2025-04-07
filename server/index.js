@@ -1,0 +1,18 @@
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const port = 3001;
+
+const circuitsRouter = require('./routes/circuits');
+const circuitRoutes = require('./routes/circuit');
+
+app.use(cors());
+app.use(express.json());
+
+// Montar router para todas las rutas relacionadas con circuitos
+app.use('/circuits', circuitsRouter);
+app.use('/circuit', circuitRoutes);
+
+app.listen(port, () => {
+  console.log(`✅ Backend running on http://localhost:${port}`);
+});

@@ -30,8 +30,8 @@ function App() {
   const currentSectorIndexRef = useRef(0);
   const sectorStartTimeRef = useRef(0);
   const elapsedRef = useRef(0); // NUEVO: tiempo real en ms
-  const API_BASE_URL = process.env.REACT_APP_API_URL;
-  console.log('URL:',API_BASE_URL)
+  const API_BASE_URL = process.env.REACT_APP_API_URL 
+  
   useEffect(() => {
     axios.get(`${API_BASE_URL}/circuit?id=${selectedCircuitId}`)
       .then(res => {

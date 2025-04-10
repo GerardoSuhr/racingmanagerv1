@@ -30,9 +30,10 @@ function App() {
   const currentSectorIndexRef = useRef(0);
   const sectorStartTimeRef = useRef(0);
   const elapsedRef = useRef(0); // NUEVO: tiempo real en ms
-
+  const API_BASE_URL = process.env.REACT_APP_API_URL 
+  
   useEffect(() => {
-    axios.get(`http://localhost:3001/circuit?id=${selectedCircuitId}`)
+    axios.get(`${API_BASE_URL}/circuit?id=${selectedCircuitId}`)
       .then(res => {
         setCircuit(res.data);
         const {
@@ -73,13 +74,13 @@ function App() {
         speedPath.current = carSpeeds;
       })
       .catch(console.error);
-  }, [selectedCircuitId, customSpeed]);
+  }, [selectedCircuitId, customSpeed, API_BASE_URL]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/circuits')
+    axios.get(`${API_BASE_URL}/circuits`)
       .then(res => setAvailableCircuits(res.data))
       .catch(console.error);
-  }, []);
+  }, [API_BASE_URL]);
 
   const startSimulation = () => {
     if (!carPath.current.length) return;

@@ -1,7 +1,8 @@
+require('dotenv').config(); // opcional si ya lo hace db.js
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 const circuitsRouter = require('./routes/circuits');
 const circuitRoutes = require('./routes/circuit');

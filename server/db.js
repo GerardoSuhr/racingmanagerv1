@@ -3,10 +3,8 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 
 // Decide qué archivo .env cargar
-const envFile = fs.existsSync('.env.local')
-  ? '.env.local'
-  : process.env.NODE_ENV === 'production'
-  ? '.env.production'
+const envFile = fs.existsSync(`.env.${process.env.NODE_ENV}`)
+  ? `.env.${process.env.NODE_ENV}`
   : '.env.development';
 
 dotenv.config({ path: envFile });
